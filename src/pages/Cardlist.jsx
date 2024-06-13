@@ -1,29 +1,69 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CardMainDataContext } from "../context/CardMainDataProvider";
+import Modal from '../components/Modal';
+import { useLocation } from 'react-router-dom';
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
 const Cardlist = () => {
   const cardData = useContext(CardMainDataContext);
   const [filterCardData, setFilterCardData] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedBanks, setSelectedBanks] = useState([]); // 선택된 은행을 관리할 상태
+  const [selectedBanks, setSelectedBanks] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const query = useQuery();
 
-  const cardBanks = [
-    "Hana",
-    "Hyundai",
-    "IBK",
-    "KB",
-    "Lotte",
-    "NH",
-    "Samsung",
-    "Sinhan",
-    "Woori",
-  ];
+  const bankNameMap = {
+    "KB국민": "KB",
+    "삼성": "Samsung",
+    "롯데": "Lotte",
+    "현대": "Hyundai",
+    "우리": "Woori",
+    "NH농협": "NH",
+    "하나": "Hana",
+    "신한": "Sinhan",
+    "IBK": "IBK"
+  };
+
+  const cardBanks = Object.values(bankNameMap);
 
   useEffect(() => {
     if (cardData.mainCardData && cardData.mainCardData.length > 0) {
       setFilterCardData(cardData.mainCardData);
     }
   }, [cardData.mainCardData]);
+
+  useEffect(() => {
+    const category = query.get('category');
+    const bank = query.get('bank');
+    const newSelectedCategories = category ? [category] : [];
+    const newSelectedBanks = bank ? [bank] : [];
+
+    if (
+      JSON.stringify(newSelectedCategories) !== JSON.stringify(selectedCategories) ||
+      JSON.stringify(newSelectedBanks) !== JSON.stringify(selectedBanks)
+    ) {
+      setSelectedCategories(newSelectedCategories);
+      setSelectedBanks(newSelectedBanks);
+      updateFilteredData(newSelectedCategories, newSelectedBanks);
+    }
+  }, [query.toString()]);
+
+  const updateFilteredData = (categories, banks) => {
+    if (!cardData.mainCardData) return;
+
+    const filterData = cardData.mainCardData.filter(
+      (card) =>
+        (categories.length === 0 || categories.every((category) =>
+          card.detailInfo.summaryCategorys.includes(category)
+        )) &&
+        (banks.length === 0 || banks.includes(card.bankName))
+    );
+    setFilterCardData(filterData);
+  };
 
   if (
     !cardData ||
@@ -58,7 +98,6 @@ const Cardlist = () => {
     updateFilteredData(newSelectedCategories, selectedBanks);
   };
 
-  // 은행 선택 함수
   const bankSelect = (bank) => {
     const index = selectedBanks.indexOf(bank);
     let newSelectedBanks = [...selectedBanks];
@@ -71,72 +110,66 @@ const Cardlist = () => {
     updateFilteredData(selectedCategories, newSelectedBanks);
   };
 
-  const updateFilteredData = (categories, banks) => {
-    const filterData = cardData.mainCardData.filter(
-      (card) =>
-        categories.every((category) =>
-          card.detailInfo.summaryCategorys.includes(category)
-        ) &&
-        (banks.length === 0 || banks.includes(card.bankName))
-    );
-    setFilterCardData(filterData);
-    console.log(filterData);
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedCard(null);
   };
 
   return (
-    <div style={{ marginTop: "100px" }}>
-      <h2>Card Categories and Banks</h2>
-      <ul
-        style={{
-          color: "white",
-          marginTop: "20px",
-          cursor: "pointer",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        {categories.map((category, index) => (
-          <li
-            key={index}
-            onClick={() => categorySelect(category)}
-            className={selectedCategories.includes(category) ? "clicked" : ""}
-            style={{
-              color: selectedCategories.includes(category) ? "red" : "white",
-              margin: "5px",
-            }}
-          >
-            {category}
-          </li>
-        ))}
-        {cardBanks.map((bank, index) => (
-          <li
-            key={index}
-            onClick={() => bankSelect(bank)}
-            className={selectedBanks.includes(bank) ? "clicked" : ""}
-            style={{
-              color: selectedBanks.includes(bank) ? "red" : "white",
-              margin: "5px",
-            }}
-          >
-            {bank}
-          </li>
-        ))}
-      </ul>
-      <div
-        style={{
-          color: "white",
-          marginTop: "20px",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        {filterCardData.map((card, idx) => (
-          <span key={idx} style={{ color: "white", margin: "5px" }}>
-            {card.cardName} ({card.bankName})
-          </span>
-        ))}
+    <section className="card_list_section">
+      <div className="container">
+        <div className="card_list_filter_box">
+          <div className="card_list_cartegory">
+            <p className="card_filter_title">카드사 선택</p>
+            {Object.keys(bankNameMap).map((bank, index) => (
+              <span
+                key={index}
+                onClick={() => bankSelect(bankNameMap[bank])}
+                className={selectedBanks.includes(bankNameMap[bank]) ? "clicked" : ""}
+              >
+                {bank}
+              </span>
+            ))}
+          </div>
+          <div className="card_list_cartegory">
+            <p className="card_filter_title">혜택 선택</p>
+            {categories.map((category, index) => (
+              <span
+                key={index}
+                onClick={() => categorySelect(category)}
+                className={selectedCategories.includes(category) ? "clicked" : ""}
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="card_result_wrapper">
+          {filterCardData.map((card, idx) => (
+            <div
+              className='card_content'
+              key={idx}
+              onClick={() => handleCardClick(card)}
+            >
+              <div className='card_content_img' style={{ backgroundImage: `url(${card.cardImg})` }}></div>
+              <div className='card_text_wrap'>
+                <p className='card_title'>{card.cardName}</p>
+                <p><span>연회비</span><br />{card.cardAnnual}</p>
+                <p>{card.cardDesc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+      {showModal && (
+        <Modal card={selectedCard} onClose={handleCloseModal} />
+      )}
+    </section>
   );
 };
 

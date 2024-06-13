@@ -1,0 +1,235 @@
+.modal_wrapper {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100001;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    .modal_content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(1);
+        width: 1100px;
+        max-height: 90vh;
+        border-radius: 20px;
+        padding: 120px 100px 100px;
+        background-color: #2F353D;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        .modal_close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border: 0px;
+            outline: 0px;
+            margin: 0px;
+            padding: 5px;
+            cursor: pointer;
+            svg {
+                width: 100%;
+                height: 100%;
+                color: var(--subColor);
+                transition: all 0.3s ease;
+            }
+            &:hover svg {
+                color: var(--mainColor);
+            }
+        }
+        .modal_body {
+            width: 100%;
+            height: auto;
+            max-height: calc(100% - 200px);
+            overflow-y: auto;
+            padding-bottom: 30px;
+            .card_title_box {
+                width: 100%;
+                height: 400px;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                .card_title_box_left {
+                    width: calc(50% - 10px);
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #11161E;
+                    border-radius: 20px;
+                    img {
+                        width: 285px;
+                        height: 285px;
+                        object-fit: contain;
+                    }
+                }
+                .card_title_box_right {
+                    width: calc(50% - 10px);
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    .modal_card_title {
+                        width: 100%;
+                        min-height: 114px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #11161E;
+                        border-radius: 20px;
+                        p {
+                            width: 100%;
+                            text-align: center;
+                            word-break: keep-all;
+                            font-family: var(--fontN);
+                            font-size: 20px;
+                            color: var(--mainColor);
+                            font-weight: 600;
+                        }
+                    }
+                    .modal_card_desc {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #11161E;
+                        border-radius: 20px;
+                        p {
+                            width: 100%;
+                            margin-bottom: 10px;
+                            font-size: 18px;
+                            font-family: var(--fontN);
+                            color: #B2BFCF;
+                            line-height: 1.2;
+                            word-break: keep-all;
+                            text-align: center;
+                            span {
+                                display: inline-block;
+                                color: var(--mainColor);
+                                border: 1px solid var(--mainColor);
+                                padding: 4px 10px;
+                                margin-bottom: 10px;
+                                border-radius: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+            .card_summary_title {
+                padding: 30px 0px;
+                font-size: 26px;
+                color: var(--mainColor);
+                font-weight: 600;
+                font-family: var(--fontN);
+            }
+            .quic_action_wrap {
+                position: sticky;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                overflow-x: auto;
+                padding: 30px 0px;
+                background-color: #2F353D;
+                border-top: 2px solid var(--mainColor);
+                border-bottom: 1px solid var(--mainColor);
+                margin-bottom: 30px;
+                a {
+                    display: block;
+                    width: fit-content;
+                    height: auto;
+                    border: 1px solid var(--mainColor);
+                    border-radius: 50px;
+                    padding: 10px 20px;
+                    color: var(--mainColor);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: var(--mainColor);
+                        color: var(--baseColor_tr);
+                    }
+                }
+            }
+            .summary_wrap {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 20px;
+                .summary_content {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    border-bottom: 1px solid var(--mainColor);
+                    gap: 20px;
+                    padding-top: 150px;
+                    margin-top: -150px;
+                }
+                .summary_content_title {
+                    width: 100%;
+                    font-family: var(--fontN);
+                    font-weight: 700;
+                    font-size: 20px;
+                    color: var(--mainColor);
+                }
+                .line {
+                    width: 100%;
+                    border-bottom: 1px solid var(--subColor);
+                }
+                .summary_content_preview {
+                    width: 100%;
+                    color: #FAFCFF;
+                    font-size: 18px;
+                    font-weight: 600;
+                    font-family: var(--fontN);
+                    line-height: 1.2;
+                }
+                .summary_content_text {
+                    width: 100%;
+                    padding-bottom: 20px;
+                    font-family: var(--fontN);
+                    font-size: 16px;
+                    line-height: 150%;
+                    letter-spacing: -2%;
+                    color: #C4D0DF;
+                    white-space: pre-wrap;
+                }
+            }
+        }
+        .card_btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+            min-height: 40px;
+            background-color: var(--mainColor);
+            color: var(--baseColor_tr);
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    }
+}

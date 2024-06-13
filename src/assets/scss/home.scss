@@ -1,0 +1,164 @@
+
+.section_title_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    .section_title {
+        font-size: 30px;
+        font-family: var(--fontG);
+        color: var(--mainColor);
+        font-weight: 600;
+    }
+    a {
+        display: block;
+        width: fit-content;
+        height: 34px;
+        padding: 0px 22px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        font-size: 16px;
+        border: 1px solid var(--mainColor);
+        color: var(--mainColor);
+        font-weight: 400;
+        transition: all 0.3s ease;
+        font-family: 'Pretendard';
+        &:hover {
+            background-color: var(--mainColor);
+            color: var(--mainColor);
+            color: var(--baseColor);
+        }
+    }
+}
+.section_hero {
+    position: relative;
+    width: 100%;
+    padding-top: 178px;
+    padding-bottom: 140px;
+    .hero_wrap {
+        width: 100%;
+        height: 734px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('../img/hero_bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .hero_title {
+            width: 804px;
+            height: 60px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 30px;
+            &::after {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                content: '';
+                width: 100%;
+                height: 100%;
+                background-color: #191e25;
+                mix-blend-mode: multiply;
+                border-radius: 6px;
+            }
+            span {
+                position: relative;
+                z-index: 1;
+                color: var(--mainColor);
+                font-size: 26px;
+                font-weight: bold;
+            }
+        }
+        h2 {
+            font-size: 190px;
+            color: var(--mainColor);
+            font-family: var(--fontM);
+            font-weight: 800;
+            margin-bottom: 80px;
+        }
+        .card_line {
+            width: 100%;
+            height: 72px;
+            background-color: var(--mainColor_sec);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            p {
+                font-size: 18px;
+                color: var(--fontColor1);
+            }
+        }
+    }
+}
+.section_category {
+    width: 100%;
+    height: auto;
+    padding: 140px 0px 0px;
+    background-color: var(--baseColor_sec);
+    .category_wrapper {
+        width: 100%;
+        height: fit-content;
+        background-color: var(--baseColor);
+        padding: 48px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+        div {
+            width: fit-content;
+            min-width: 80px;        
+            height: 54px;
+            background-color: var(--baseColor_tr);
+            color: var(--subColor);
+            font-family: var(--fontN);
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 0px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                background-color: var(--mainColor);
+                color: var(--baseColor);
+            }
+        }
+    }
+}
+.section_list {
+    width: 100%;
+    height: auto;
+    padding: 140px 0px 0px;
+    background-color: var(--baseColor_sec);
+    .card_list_wrapper {
+        width: 100%;
+        height: fit-content;
+        background-color: var(--baseColor);
+        padding: 100px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

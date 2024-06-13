@@ -7,10 +7,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Cardlist from './pages/Cardlist'
 
 import './assets/scss/index.scss'
+import CardMainDataProvider from './context/CardMainDataProvider'
 
 const App = () => {
+
   return (
     <>
+    <CardMainDataProvider>
       <BrowserRouter>
         <Header/>
         <Main>
@@ -21,6 +24,7 @@ const App = () => {
         </Main>
         <Footer/>
       </BrowserRouter>
+      </CardMainDataProvider>
     </>
   )
 }

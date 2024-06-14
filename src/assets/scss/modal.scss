@@ -151,6 +151,9 @@
                 border-top: 2px solid var(--mainColor);
                 border-bottom: 1px solid var(--mainColor);
                 margin-bottom: 30px;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
                 a {
                     display: block;
                     width: fit-content;

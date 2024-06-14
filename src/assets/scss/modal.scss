@@ -154,13 +154,15 @@
                 a {
                     display: block;
                     width: fit-content;
-                    height: auto;
+                    height: 40px;
                     border: 1px solid var(--mainColor);
                     border-radius: 50px;
                     padding: 10px 20px;
                     color: var(--mainColor);
                     transition: all 0.3s ease;
                     cursor: pointer;
+                    white-space: nowrap;
+                    line-height: 22px;
                     &:hover {
                         background-color: var(--mainColor);
                         color: var(--baseColor_tr);

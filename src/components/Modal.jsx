@@ -6,7 +6,6 @@ const Modal = ({ card, onClose }) => {
   if (!card) return null;
 
   const {
-    bankName,
     cardAnnual,
     cardDesc,
     cardImg,
@@ -16,11 +15,7 @@ const Modal = ({ card, onClose }) => {
 
   const {
     BenefitsTitle,
-    cardAnnualFee,
-    cardBasePerformance,
     cardBtnUrl,
-    cardSummary,
-    cardTitle,
     summaryCategorys,
     summaryInfo
   } = detailInfo;

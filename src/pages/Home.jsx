@@ -46,10 +46,6 @@ const Home = () => {
     navigate(`/cards?category=${category}`);
   };
 
-  const handleBankClick = (bank) => {
-    navigate(`/cards?bank=${bank}`);
-  };
-
   return (
     <>
       <div className='container home_container'>

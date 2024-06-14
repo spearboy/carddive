@@ -28,7 +28,6 @@ const Cardlist = () => {
     "IBK": "IBK"
   };
 
-  const cardBanks = Object.values(bankNameMap);
 
   useEffect(() => {
     if (cardData.mainCardData && cardData.mainCardData.length > 0) {

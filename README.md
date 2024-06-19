@@ -13,9 +13,9 @@ CARDIVE는 사용자가 다양한 신용카드를 비교하고 분석할 수 있
 - 사용자 맞춤형 필터링 및 정렬 기능
 
 ## 사이트 프리뷰
-1. 메인 사이트    
 <img width="1678" alt="image" src="https://github.com/spearboy/carddive/assets/95023009/3c9c90ea-ad84-4fb2-a046-2ee8325a8c6e">   
-<img width="1680" alt="image" src="https://github.com/spearboy/carddive/assets/95023009/3230b455-9f10-47f3-9e91-9cad922cff04">
+<img width="1680" alt="image" src="https://github.com/spearboy/carddive/assets/95023009/3230b455-9f10-47f3-9e91-9cad922cff04">   
+<img width="1675" alt="image" src="https://github.com/spearboy/carddive/assets/95023009/045d94cb-e5ec-4307-975a-8485264f20e0">
 
 ## 사용법
 1. 사이트 접속: [CARDIVE](https://cardive.vercel.app/)

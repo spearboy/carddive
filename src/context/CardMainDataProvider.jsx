@@ -39,7 +39,7 @@ const CardMainDataProvider = ({ children }) => {
             
 
                 for (let i = 0; i < cardBanks.length; i++) {
-                    const res = await axios.get(`https://raw.githubusercontent.com/jaehyuk-lee-0712/cardDataScrap/main/scrapList/card${cardBanks[i]}_${yesterDay}.json`);
+                    const res = await axios.get(`https://raw.githubusercontent.com/jaehyuk-lee-0712/cardDataScrap/main/scrapList/card${cardBanks[i]}_2024-06-13.json`);
                     
 
                     if(res.data.length > 0) {

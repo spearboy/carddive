@@ -28,7 +28,6 @@ const Cardlist = () => {
     "IBK": "IBK"
   };
 
-
   useEffect(() => {
     if (cardData.mainCardData && cardData.mainCardData.length > 0) {
       setFilterCardData(cardData.mainCardData);
@@ -57,7 +56,7 @@ const Cardlist = () => {
     const filterData = cardData.mainCardData.filter(
       (card) =>
         (categories.length === 0 || categories.every((category) =>
-          card.detailInfo.summaryCategorys.includes(category)
+          card.detailInfo?.summaryCategorys?.includes(category)
         )) &&
         (banks.length === 0 || banks.includes(card.bankName))
     );

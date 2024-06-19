@@ -28,7 +28,7 @@ CARDIVE는 사용자가 다양한 신용카드를 비교하고 분석할 수 있
 
 ## 기술 스택
 - 프론트엔드: React
-- 백엔드: Node.js
+- 백엔드: Node.js,python
 - 배포: Vercel
 
 

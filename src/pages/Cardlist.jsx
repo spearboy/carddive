@@ -148,7 +148,9 @@ const Cardlist = () => {
           </div>
         </div>
         <div className="card_result_wrapper">
-          {filterCardData.map((card, idx) => (
+
+        {filterCardData.length > 0 ? (
+          filterCardData.map((card, idx) => (
             <div
               className='card_content'
               key={idx}
@@ -161,7 +163,10 @@ const Cardlist = () => {
                 <p>{card.cardDesc}</p>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <p className="empty_text">해당 조건의 카드가 없습니다.</p>
+        )}
         </div>
       </div>
       {showModal && (

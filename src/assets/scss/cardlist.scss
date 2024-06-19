@@ -60,6 +60,11 @@
         flex-wrap: wrap;
         gap: 100px;
         margin-top: 100px;
+        .empty_text {
+            color: var(--mainColor);
+            font-size: 20px;
+            margin: 0px auto;
+        }
         .card_content {
             width: 200px;
             height: auto;
@@ -96,7 +101,7 @@
                         color: var(--mainColor);
                         border: 1px solid var(--mainColor);
                         padding: 4px 10px;
-                        margin-bottom: 4px;
+                        margin-bottom: 8px;
                         border-radius: 10px;
                     }
                 }

@@ -190,12 +190,22 @@
                 align-items: flex-start;
                 justify-content: flex-start;
                 p {
+                    width: 100%;
                     margin-bottom: 10px;
                     font-size: 14px;
                     font-family: var(--fontN);
                     color: #B2BFCF;
                     line-height: 1.2;
                     word-break: keep-all;
+                    text-align: center;
+                    span {
+                        display: inline-block;
+                        color: var(--mainColor);
+                        border: 1px solid var(--mainColor);
+                        padding: 4px 10px;
+                        margin-bottom: 8px;
+                        border-radius: 10px;
+                    }
                 }
                 .card_title {
                     margin-bottom: 18px;

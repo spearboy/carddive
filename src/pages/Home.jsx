@@ -97,7 +97,7 @@ const Home = () => {
                     <div className='card_content_img' style={{backgroundImage:`url(${card.cardImg})`}}></div>
                     <div className='card_text_wrap'>
                       <p className='card_title'>{card.cardName}</p>
-                      <p>연회비: {card.cardAnnual}</p>
+                      <p><span>연회비</span><br/>{card.cardAnnual}</p>
                       <p>{card.cardDesc}</p>
                     </div>
                   </div>
